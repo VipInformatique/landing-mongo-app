@@ -3,7 +3,7 @@ name: Build & Push Docker image
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*'  # tylko push tagu np. v1.0.0 uruchamia workflow
     branches: [ main ]  # możesz zmienić na master lub inny branch
   workflow_dispatch: 
 
