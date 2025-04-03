@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vip Informatique - Système de Vidéosurveillance</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Offre Spéciale</h1>
+  <h2>Système de Vidéosurveillance Professionnel</h2>
+  <br><img src="image.jpeg" alt="Système de vidéosurveillance">
+
+  <br> <p>Protégez votre domicile ou votre entreprise avec une installation professionnelle de caméras de sécurité.</p>
+  <p>👉 Aujourd'hui : <strong>-15% de réduction</strong> sur votre installation complète !</p>
+
+  <section>
+    <h2>Recevez votre remise maintenant</h2>
+    <form id="contactForm">
+      <input type="email" name="email" placeholder="Votre adresse e-mail" required>
+      <button type="submit">🎁 J'obtiens -15%</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>📍 9 rue de l'Est, 95110 Sannois | 📞 07 54 02 04 29</p>
+    <p>✉️ contact@vipinformatique.fr</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        email: form.email.value
+      };
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      alert(result.message || 'Merci ! Votre remise est enregistrée.');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
