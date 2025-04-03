@@ -11,7 +11,7 @@ const app = express();
 const PORT = 3000;
 
 // Połączenie z MongoDB (lokalnie lub podmień na MongoDB Atlas)
-mongoose.connect('mongodb+srv://vipinformatique:S7oabiCt7FXlAekg@landing-mongo.o4zxdtx.mongodb.net/?retryWrites=true&w=majority&appName=landing-mongo', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
