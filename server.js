@@ -37,7 +37,7 @@ app.post('/api/contact', async (req, res) => {
     const contact = new Contact({ email });
     await contact.save();
 
-    const confirmUrl = `http://localhost:3000/api/confirm?email=${encodeURIComponent(email)}`;
+    const confirmUrl = `http://89.213.175.182:30080/api/confirm?email=${encodeURIComponent(email)}`;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
