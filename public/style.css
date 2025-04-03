@@ -78,9 +78,9 @@ body {
   
   img {
     display: block;
-    max-width: 25%;
+    max-width: 65%;
     height: auto;
-    margin: 20px auto;
+    margin: 30px auto;
     border-radius: 8px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4);
   }
