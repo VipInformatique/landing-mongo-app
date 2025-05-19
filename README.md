@@ -104,11 +104,11 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Rafal RUTKOWSKI** – [vip-informatique.fr](https://vip-informatique.fr)
+**Rafal RUTKOWSKI** – [vipinformatique.fr](https://vipinformatique.fr)
 
 
 ## 📎 Contribution & Contact
 
 Pull requests are welcome! For major changes, please open an issue first.
 
-📬 You can contact me at: [contact@vip-informatique.fr](mailto:contact@vip-informatique.fr)
+📬 You can contact me at: [contact@vipinformatique.fr](mailto:contact@vipinformatique.fr)
