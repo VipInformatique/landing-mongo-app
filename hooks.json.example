@@ -1,0 +1,8 @@
+[
+  {
+    "id": "redeploy-landing-app",
+    "execute-command": "/opt/scripts/update.sh",
+    "command-working-directory": "/opt/scripts/",
+    "response-message": "Redeployment triggered."
+  }
+]
