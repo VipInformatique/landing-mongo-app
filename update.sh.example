@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Ścieżka do bezpiecznego pliku ze zmiennymi środowiskowymi
+ENV_FILE="/etc/secrets/landing-app.env"
+
+# Sprawdzenie, czy plik z sekretami istnieje
+if [ ! -f "$ENV_FILE" ]; then
+    echo "BŁĄD: Plik z sekretami $ENV_FILE nie został znaleziony!"
+    exit 1
+fi
+
+# Zatrzymanie i usunięcie starego kontenera aplikacji
+echo "Stopping and removing old container..."
+docker stop landing-app || true
+docker rm landing-app || true
+
+# Pobranie najnowszej wersji obrazu z Docker Hub
+echo "Pulling latest image..."
+docker pull vipinformatique/landing-app:latest
+
+# Uruchomienie nowego kontenera, wczytując zmienne z bezpiecznego pliku
+echo "Starting new container with secrets from $ENV_FILE..."
+docker run -d \
+  -p 3000:3000 \
+  --name landing-app \
+  --restart always \
+  --env-file "$ENV_FILE" \
+  vipinformatique/landing-app:latest
+
+echo "Deployment finished successfully!"
