@@ -97,10 +97,38 @@ This project includes a fully automated CI/CD pipeline.
 
 ### Continuous Deployment (CD) - Server-Side
 
--   The CI pipeline notifies a webhook listener (e.g., `adnanh/webhook`) on the production server after a successful image push.
--   The webhook listener executes a deployment script (`update.sh`) on the server.
--   The `update.sh` script automatically pulls the latest Docker image and restarts the application container, ensuring a seamless update.
+---
 
+## ⚙️ Continuous Deployment (CD) - Server-Side Setup
+
+This project is designed for fully automated deployments. While the CI pipeline builds and pushes the Docker image, the CD part is handled on the production server for maximum security.
+
+Below is the recommended setup for the deployment server.
+
+### 1. Secure Secret Management (Crucial Step)
+
+Sensitive data (database URI, email passwords) **must never be stored in Git**. They should be placed in an environment file on the server, secured with strict permissions.
+
+**Example: `/etc/secrets/landing-app.env`** *(This file must be created manually on the server and protected, e.g., `chmod 600`)*
+Production environment variables
+MONGO_URI="mongodb+srv://user:password@cluster.mongodb.net/mydb"
+EMAIL_USER="your_email@gmail.com
+EMAIL_PASS="your_gmail_app_password"
+
+
+### 2. Deployment Script
+
+The server needs a script that pulls the latest Docker image and restarts the container, securely loading the secrets from the `.env` file.
+
+See the example script: **[update.sh.example](update.sh.example)**
+
+This script should be placed on the server (e.g., in `/opt/scripts/`) and made executable.
+
+### 3. Webhook Listener
+
+A webhook listener (like the `adnanh/webhook` container) running on the server triggers the deployment script when it receives a notification from the CI pipeline.
+
+See the example configuration: **[hooks.json.example](hooks.json.example)**
 ## 📜 License
 
 This project is licensed under the **MIT License**. See the `LICENSE` file for details.
